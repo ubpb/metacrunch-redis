@@ -24,14 +24,14 @@ module Metacrunch
         while true
           list, result = @redis.blpop(@queue_name, timeout: @blocking_timeout)
           if result.present?
-            yield JSON.parse(result)
+            yield result
           else
             yield nil
           end
         end
       else
         while result = @redis.lpop(@queue_name)
-          yield JSON.parse(result)
+          yield result
         end
       end
 
