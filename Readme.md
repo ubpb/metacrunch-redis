@@ -71,4 +71,4 @@ destination Metacrunch::Redis::QueueDestination.new(redis, "my-list" [, OPTIONS]
 
 **Options**
 
-* `:save_on_close`: When set to `true` a Redis `bgsave` will be performed when the destination is closed. Defaults to `true`. 
+* `:save_on_close`: When set to `true` a Redis `bgsave` will be performed when the destination is closed. Defaults to `false`. 

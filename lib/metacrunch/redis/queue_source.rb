@@ -3,26 +3,22 @@ require "metacrunch/redis"
 module Metacrunch
   class Redis::QueueSource
 
-    def initialize(redis_connection_or_url, queue_name, options = {})
+    DEFAULT_OPTIONS = {
+      blocking_mode: false
+    }
+
+    def initialize(redis, queue_name, options = {})
+      @redis = redis
       @queue_name = queue_name
-      raise ArgumentError, "queue_name must be a string" unless queue_name.is_a?(String)
-
-      @blocking_mode = options.delete(:blocking) || false
-      @blocking_timeout = options.delete(:blocking_timeout) || 0
-
-      @redis = if redis_connection_or_url.is_a?(String)
-        ::Redis.new(url: redis_connection_or_url)
-      else
-        redis_connection_or_url
-      end
+      @options = DEFAULT_OPTIONS.merge(options)
     end
 
     def each(&block)
       return enum_for(__method__) unless block_given?
 
-      if @blocking_mode
+      if @options[:blocking_mode]
         while true
-          list, result = @redis.blpop(@queue_name, timeout: @blocking_timeout)
+          list, result = @redis.blpop(@queue_name, timeout: 0)
           if result.present?
             yield result
           else

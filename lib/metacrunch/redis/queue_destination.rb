@@ -3,20 +3,19 @@ require "metacrunch/redis"
 module Metacrunch
   class Redis::QueueDestination
 
-    def initialize(redis_connection_or_url, queue_name, options = {})
+    DEFAULT_OPTIONS = {
+      save_on_close: false
+    }
+
+    def initialize(redis, queue_name, options = {})
+      @redis = redis
       @queue_name = queue_name
-      raise ArgumentError, "queue_name must be a string" unless queue_name.is_a?(String)
-
-      @save_on_close = options.delete(:save_on_close) || true
-
-      @redis = if redis_connection_or_url.is_a?(String)
-        ::Redis.new(url: redis_connection_or_url)
-      else
-        redis_connection_or_url
-      end
+      @options = DEFAULT_OPTIONS.merge(options)
     end
 
     def write(data)
+      return if data.blank?
+
       @redis.rpush(@queue_name, data)
     rescue RuntimeError => e
       if e.message =~ /maxmemory/
@@ -30,7 +29,9 @@ module Metacrunch
 
     def close
       if @redis
-        @redis.bgsave if @save_on_close
+        begin
+          @redis.bgsave if @options[:save_on_close]
+        rescue Redis::CommandError ; end
         @redis.close
       end
     end
