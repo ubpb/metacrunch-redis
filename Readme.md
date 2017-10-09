@@ -52,7 +52,7 @@ source Metacrunch::Redis::QueueSource.new(redis, "my-list" [, OPTIONS])
 
 This class provides a metacrunch `destination` implementation that can be used to write data from a metacrunch job into a redis queue/list.
 
-Redis only stores strings as values. If you want to store an object, you can use a serialization mechanism such as JSON. You can use a transformation to convert your data into JSON format before your data reaching the destination.
+Redis only stores strings as values. If you want to store an object, you can use a serialization mechanism such as JSON. You can use a transformation to convert your data into JSON format before your data reaches the destination.
 
 In case Redis reaches it's `maxmemory` limit during write, the implementation will wait for 10 seconds and tries to write the data again. That means you can set a proper `maxmemory` limit for your Redis instance and don't need to worry about your metacrunch jobs getting aborted.
 
