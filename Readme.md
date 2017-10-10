@@ -37,7 +37,7 @@ This class provides a metacrunch `source` implementation that can be used to rea
 # my_job.metacrunch
 
 # connect to redis
-redis = ::Redis.new(url: "redis://localhost:6379/my-db")
+redis = Redis.new(url: "redis://localhost:6379/my-db")
 
 # Set the source
 source Metacrunch::Redis::QueueSource.new(redis, "my-list" [, OPTIONS])
