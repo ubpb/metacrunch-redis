@@ -3,7 +3,8 @@ metacrunch-redis
 
 [![Gem Version](https://badge.fury.io/rb/metacrunch-redis.svg)](http://badge.fury.io/rb/metacrunch-redis)
 [![Code Climate](https://codeclimate.com/github/ubpb/metacrunch-redis/badges/gpa.svg)](https://codeclimate.com/github/ubpb/metacrunch-redis)
-[![Build Status](https://travis-ci.org/ubpb/metacrunch-redis.svg)](https://travis-ci.org/ubpb/metacrunch-redis)
+[![Test Coverage](https://codeclimate.com/github/ubpb/metacrunch-redis/badges/coverage.svg)](https://codeclimate.com/github/ubpb/metacrunch-redis/coverage)
+[![CircleCI](https://circleci.com/gh/ubpb/metacrunch-redis.svg?style=svg)](https://circleci.com/gh/ubpb/metacrunch-redis)
 
 This is the official [Redis](https://redis.io) package for the [metacrunch ETL toolkit](https://github.com/ubpb/metacrunch).
 
