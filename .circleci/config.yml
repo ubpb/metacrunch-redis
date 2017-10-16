@@ -7,11 +7,16 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.1-node-browsers
+      - image: redis:latest
 
     working_directory: ~/repo
 
     steps:
       - checkout
+
+      - run:
+          name: Waiting for redis to start up (20 sec.)
+          command: sleep 20
 
       - run:
           name: Install dependencies
