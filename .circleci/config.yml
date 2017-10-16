@@ -15,8 +15,8 @@ jobs:
       - checkout
 
       - run:
-          name: Waiting for redis to start up (20 sec.)
-          command: sleep 20
+          name: Waiting for redis to start up (5 sec.)
+          command: sleep 5
 
       - run:
           name: Install dependencies

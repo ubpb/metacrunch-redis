@@ -19,11 +19,7 @@ module Metacrunch
       if @options[:blocking_mode]
         while true
           list, result = @redis.blpop(@queue_name, timeout: 0)
-          if result.present?
-            yield result
-          else
-            yield nil
-          end
+          yield result
         end
       else
         while result = @redis.lpop(@queue_name)

@@ -32,7 +32,7 @@ module Metacrunch
         begin
           @redis.bgsave if @options[:save_on_close]
         rescue Redis::CommandError ; end
-        @redis.close
+        @redis.quit
       end
     end
 
