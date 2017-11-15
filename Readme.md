@@ -46,7 +46,7 @@ source Metacrunch::Redis::QueueSource.new(redis, "my-list" [, OPTIONS])
 
 **Options**
 
-* `:blocking`: When set to `true` the source will block and waits for new data if the redis list is empty. Defaults to `false`.
+* `:blocking_mode`: When set to `true` the source will block and waits for new data if the redis list is empty. Defaults to `false`.
 
 
 ### `Metacrunch::Redis::QueueDestination`
