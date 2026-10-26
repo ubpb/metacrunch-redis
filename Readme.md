@@ -6,6 +6,10 @@ metacrunch-redis
 [![Test Coverage](https://codeclimate.com/github/ubpb/metacrunch-redis/badges/coverage.svg)](https://codeclimate.com/github/ubpb/metacrunch-redis/coverage)
 [![CircleCI](https://circleci.com/gh/ubpb/metacrunch-redis.svg?style=svg)](https://circleci.com/gh/ubpb/metacrunch-redis)
 
+> **metacrunch-redis belongs to metacrunch 4.x** and does not work with metacrunch 5 yet. It will be migrated into the
+> [metacrunch repository](https://github.com/ubpb/metacrunch), where metacrunch 5 and its extension gems are
+> developed. metacrunch 5 is not released yet.
+
 This is the official [Redis](https://redis.io) package for the [metacrunch ETL toolkit](https://github.com/ubpb/metacrunch).
 
 Installation
